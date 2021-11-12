@@ -56,15 +56,23 @@ client.on("chat", (target, ctx, message, self) => {
     client.say(target, `!pepperoni`);
   }
   if (commandName === "!mide") {
-    const num = rollDice();
-    client.say(target, `A ${ctx.username} le mide ${num}cm PogChamp`); // 	streamElemets: /me A $(user) le mide ${random.1-40}cm PogChamp
+    const num = randomNumber30();
+    client.say(target, `A ${ctx.username} le mide ${num}cm PogChamp`); 
+  }
+  if (commandName === "!facha") {
+    const num = randomNumber100();
+    client.say(target, `${ctx.username} Tu nivel de facha es del ${num}% GlitchCat GlitchCat`);
   }
   if (commandName === "!calor") {
     client.say(target, `POR QUE HACE TANTO CALORRRRR SwiftRage SwiftRage`);
   }
 });
 
-function rollDice() {
+const randomNumber30 = () => {
   const sides = 30;
+  return Math.floor(Math.random() * sides) + 1;
+}
+const randomNumber100 = () => {
+  const sides = 100;
   return Math.floor(Math.random() * sides) + 1;
 }
