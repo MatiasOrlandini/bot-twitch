@@ -28,19 +28,11 @@ client.on("chat", (target, ctx, message, self) => {
   const commandName = message.trim();
 
   if (commandName.indexOf("hola") > -1) {
-    client.say(target, `Bienvenido! ${ctx.username}`);
+    client.say(target, `Bienvenid@! ${ctx.username}`);
   }
 
   if (commandName.indexOf("buenas") > -1) {
-    client.say(target, `Bienvenido! ${ctx.username}`);
-  }
-
-  if (commandName.indexOf("Hola") > -1) {
-    client.say(target, `Bienvenido! ${ctx.username}`);
-  }
-
-  if (commandName.indexOf("Buenas") > -1) {
-    client.say(target, `Bienvenido! ${ctx.username}`);
+    client.say(target, `Bienvenid@! ${ctx.username}`);
   }
 
   if (commandName === "gg") {
@@ -57,22 +49,32 @@ client.on("chat", (target, ctx, message, self) => {
   }
   if (commandName === "!mide") {
     const num = randomNumber30();
-    client.say(target, `A ${ctx.username} le mide ${num}cm PogChamp`); 
+    client.say(target, `A ${ctx.username} le mide ${num}cm PogChamp`);
   }
   if (commandName === "!facha") {
     const num = randomNumber100();
-    client.say(target, `${ctx.username} Tu nivel de facha es del ${num}% GlitchCat GlitchCat`);
+    client.say(
+      target,
+      `${ctx.username} Tu nivel de facha es del ${num}% GlitchCat GlitchCat`
+    );
   }
   if (commandName === "!calor") {
     client.say(target, `POR QUE HACE TANTO CALORRRRR SwiftRage SwiftRage`);
   }
 });
 
+client.on("raided", (channel, username, viewers) => {
+  client.say(
+    channel,
+    `Gracias a ${username} se han unido ${viewers} espectadores, bienvenidos a tod@s <3`
+  );
+});
+
 const randomNumber30 = () => {
   const sides = 30;
   return Math.floor(Math.random() * sides) + 1;
-}
+};
 const randomNumber100 = () => {
   const sides = 100;
   return Math.floor(Math.random() * sides) + 1;
-}
+};
