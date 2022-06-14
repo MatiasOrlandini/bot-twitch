@@ -27,14 +27,6 @@ client.on("chat", (target, ctx, message, self) => {
 
   const commandName = message.trim();
 
-  if (commandName.indexOf("hola") > -1) {
-    client.say(target, `Bienvenid@! ${ctx.username}`);
-  }
-
-  if (commandName.indexOf("buenas") > -1) {
-    client.say(target, `Bienvenid@! ${ctx.username}`);
-  }
-
   if (commandName === "gg") {
     client.say(target, `GG`);
   }
@@ -63,10 +55,28 @@ client.on("chat", (target, ctx, message, self) => {
   }
 });
 
+const cooldown = new Set();
+
+function addToCooldown(ID) {
+  cooldown.add(ID);
+  setTimeout(() => {
+    cooldown.delete(ID);
+  }, 3600000);
+}
+
+client.on("chat", (target, ctx, message, self) => {
+  if (message === "!mmbuenas" && !self) {
+    if (!cooldown.has(ctx.username)) {
+      addToCooldown(ctx.username);
+      client.say(target, `Bienvenid@! ${ctx.username}`);
+    }
+  }
+});
+
 client.on("raided", (channel, username, viewers) => {
   client.say(
     channel,
-    `Gracias a ${username} se han unido ${viewers} espectadores, bienvenidos a tod@s <3`
+    `Gracias a ${username} se han unido ${viewers} espectadores, bienvenidos a tod@s, pasen por el canal a dejar el follow https://twitch.tv/${username} <3`
   );
 });
 
