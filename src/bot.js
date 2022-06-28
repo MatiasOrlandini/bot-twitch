@@ -80,10 +80,33 @@ client.on("raided", (channel, username, viewers) => {
   );
 });
 
+client.on("subscription", (channel, username, method, message, userstate) => {
+  client.say(channel, `${username} Se ha suscrito! PogChamp`);
+});
+
+client.on("resub", (channel, username, months, message, userstate, methods) => {
+  client.say(
+    channel,
+    `${username} Se ha suscrito por ${months} meses seguidos! PogChamp`
+  );
+});
+
+client.on(
+  "subgift",
+  (channel, username, streakMonths, recipient, methods, userstate) => {
+    let senderCount = ~~userstate["msg-param-sender-count"];
+    client.say(
+      channel,
+      `${username} Le regaló una sub a ${recipient} PogChamp, lleva regalando ${senderCount} subs en el canal`
+    );
+  }
+);
+
 const randomNumber30 = () => {
   const sides = 30;
   return Math.floor(Math.random() * sides) + 1;
 };
+
 const randomNumber100 = () => {
   const sides = 100;
   return Math.floor(Math.random() * sides) + 1;
