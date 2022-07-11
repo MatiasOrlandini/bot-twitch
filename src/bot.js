@@ -85,19 +85,19 @@ client.on("subscription", (channel, username, method, message, userstate) => {
 });
 
 client.on("resub", (channel, username, months, message, userstate, methods) => {
+  let cumulativeMonths = ~~userstate["msg-param-cumulative-months"];
   client.say(
     channel,
-    `${username} Se ha suscrito por ${months} meses seguidos! PogChamp`
+    `${username} Se ha suscrito por ${cumulativeMonths} meses, con una racha de ${months} meses seguidos! PogChamp`
   );
 });
 
 client.on(
   "subgift",
   (channel, username, streakMonths, recipient, methods, userstate) => {
-    let senderCount = ~~userstate["msg-param-sender-count"];
     client.say(
       channel,
-      `${username} Le regaló una sub a ${recipient} PogChamp, lleva regalando ${senderCount} subs en el canal`
+      `${username} Le regaló una sub a ${recipient} PogChamp PogChamp`
     );
   }
 );
