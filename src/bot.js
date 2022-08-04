@@ -102,7 +102,7 @@ client.on(
   }
 );
 
-client.on("cheer", (channel, username, userstate, message) => {
+client.on("cheer", (channel, userstate, username) => {
   client.say(channel, `${username} Ha tirado ${userstate.bits} Bits! PogChamp`);
 });
 
