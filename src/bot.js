@@ -102,8 +102,11 @@ client.on(
   }
 );
 
-client.on("cheer", (channel, userstate, username) => {
-  client.say(channel, `${username} Ha tirado ${userstate.bits} Bits! PogChamp`);
+client.on("cheer", (channel, userstate, message) => {
+  client.say(
+    channel,
+    `${userstate.username} Ha tirado ${userstate.bits} Bits! PogChamp`
+  );
 });
 
 const randomNumber30 = () => {
